@@ -92,7 +92,11 @@ if st.session_state.current_chat is None:
     st.info("👈 Create a new chat from sidebar to start")
     st.stop()
 
+
 current = st.session_state.current_chat
+# Ensure chat_docs entry exists for current chat
+if current not in st.session_state.chat_docs:
+    st.session_state.chat_docs[current] = {"vector_db": None, "chunks": None}
 
 # Upload PDFs
 file_key = f"uploader_{current}"
