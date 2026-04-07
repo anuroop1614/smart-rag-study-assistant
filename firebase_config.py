@@ -1,10 +1,11 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
-import os
-import json
 
-# Load Firebase key from environment (Streamlit secrets)
-key_dict = json.loads(os.environ["FIREBASE_KEY"])
+import json
+import streamlit as st
+
+# Load Firebase key from Streamlit secrets
+key_dict = json.loads(st.secrets["FIREBASE_KEY"])
 
 # Initialize Firebase (only once)
 if not firebase_admin._apps:
